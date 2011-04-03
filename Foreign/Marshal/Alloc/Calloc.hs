@@ -28,8 +28,7 @@ module Foreign.Marshal.Alloc.Calloc (
 import Foreign.C.Types
 import Foreign.Storable
 import Foreign.Ptr
-
-import GHC.IO.Exception
+import Foreign.Marshal.Error
 
 foreign import ccall unsafe "stdlib.h calloc"
   _calloc :: CSize -> CSize -> IO (Ptr a)
@@ -58,16 +57,4 @@ calloc = doCalloc undefined
 -- no longer required.
 --
 callocBytes :: Int -> IO (Ptr a)
-callocBytes size = failWhenNULL "calloc" (_calloc (fromIntegral size) 1)
-
--- Shamelessly borrowed from GHC's implementation of base:
--- asserts that the pointer returned from the action in the second argument is
--- non-null
---
-failWhenNULL :: String -> IO (Ptr a) -> IO (Ptr a)
-failWhenNULL name f = do
-   addr <- f
-   if addr == nullPtr
-      then ioError (IOError Nothing ResourceExhausted name 
-                                        "out of memory" Nothing Nothing)
-      else return addr
+callocBytes size = throwIfNull "calloc" (_calloc (fromIntegral size) 1)
