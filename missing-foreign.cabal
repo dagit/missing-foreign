@@ -1,5 +1,5 @@
 Name:                missing-foreign
-Version:             0.1.0
+Version:             0.1.1
 Synopsis:            Convenience functions for FFI work
 Description:         Add several functions missing in the standard
                      Foreign modules:
@@ -17,7 +17,7 @@ Cabal-version:       >=1.6
 
 Library
   -- Modules exported by the library.
-  Exposed-modules:     Foreign.Marshal.Alloc.Calloc
+  Exposed-modules:     Foreign.Marshal.MissingAlloc
                        Foreign.Marshal.MissingUtils
   
   -- Packages needed in order to build this package.

@@ -1,14 +1,14 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 ----------------------------------------------------------------
 -- |
--- Module       : Foreign.Marshal.Alloc.Calloc
+-- Module       : Foreign.Marshal.MissingAlloc
 -- Copyright    : (c) Jason Dagit 2011
 -- License      : BSD-style (see the file LICENSE)
 -- 
 -- Maintainer   : dagitj@gmail.com
 --
--- The module "Foreign.Marshal.Alloc.Calloc" provides access to
--- the 'calloc' (e.g., allocated 0-initialized chunks of memory
+-- The module "Foreign.Marshal.MissingAlloc" provides access to
+-- 'calloc' (e.g., allocated 0-initialized chunks of memory
 -- outside of the Haskell storage manager).
 --
 -- If any of these allocation functions fails, an exception is
@@ -18,7 +18,7 @@
 -- foreign types.
 --
 ----------------------------------------------------------------
-module Foreign.Marshal.Alloc.Calloc (
+module Foreign.Marshal.MissingAlloc (
   -- * Memory allocation
   -- ** Initialized dynamic allocation
   calloc,     -- :: Storable a => IO (Ptr a)
