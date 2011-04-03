@@ -1,0 +1,5 @@
+*.[oa]
+*.hi
+*.swp
+dist/
+cabal-dev/
